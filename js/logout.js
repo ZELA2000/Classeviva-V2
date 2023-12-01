@@ -1,10 +1,8 @@
 var Cookies2 = Cookies.noConflict()
 
-$(document).ready(function(){
-    if(Cookies2.get("Login") != "True"){
-        window.location.replace("index.html")
-    }
-});
+if(Cookies2.get("Login") != "False"){
+    window.location.replace("index.html")
+}
 
 $(document).ready(function(){
     $("#logout").click(function(){
