@@ -1,0 +1,17 @@
+$(document).ready(function(){
+    $("#bot-bacheca").click(function(){
+        window.location.replace("bacheca.html");
+    });
+    $("#bot-classi").click(function(){
+        window.location.replace("classi.html");
+    });
+    $("#bot-note").click(function(){
+        window.location.replace("note.html");
+    });
+    $("#bot-studenti").click(function(){
+        window.location.replace("studenti.html");
+    });
+    $("#bot-voti").click(function(){
+        window.location.replace("voti.html");
+    });
+});

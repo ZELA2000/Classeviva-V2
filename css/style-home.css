@@ -1,22 +1,23 @@
-#box-logout{
-    position: absolute;
-    top: 16px;
-    right: 15px;
-    height: 5%;
-    width: 100px;
-    justify-content: center;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,400;1,500&display=swap');
+#bot-bacheca, #bot-classi, #bot-note, #bot-studenti, #bot-voti{
+    height: 2.5em;
 }
-#logout{
+.bot{
     width: 100%;
+    text-align: left;
+    border: 0px;
+    height: 7em;
+    border-bottom: #990c18 2px solid;
     background-color: #e7e7e7;
-    border: 1px solid black;
-    border-radius: 0.5em;
-    padding: 5px;
+    margin-top: 1em;
+    padding-left: 3em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Archivo Black';
+    font-size: 1.8em;
+    color:#990c18;
+    text-shadow: 0px 1px #cc1020, 0px -1px #cc1020, 1px 0px #cc1020, -1px 0px #cc1020;
 }
-#logout:hover{
+.bot:hover{
     background-color: #d1d1d1;
-}
-#account{
-    width: 80%;
 }

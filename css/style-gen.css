@@ -15,3 +15,25 @@ header{
     padding: 20px;
     box-shadow: 2px 0px 20px 5px #990c18;
 }
+#box-logout{
+    position: absolute;
+    top: 16px;
+    right: 15px;
+    height: 5%;
+    width: 100px;
+    justify-content: center;
+    text-align: center;
+}
+#logout{
+    width: 100%;
+    background-color: #e7e7e7;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    padding: 5px;
+}
+#logout:hover{
+    background-color: #d1d1d1;
+}
+#account{
+    width: 80%;
+}

@@ -1,4 +1,4 @@
-var Cookies2 = Cookies.noConflict()
+var Cookies2 = Cookies.noConflict();
 
 if(Cookies2.get("Login") != "True"){
     window.location.replace("index.html")
