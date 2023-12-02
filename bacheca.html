@@ -21,13 +21,27 @@
       </header>
       <main>
         <div id="bottoni">
-            <button id="indietro">Torna a Home</button>
-            <button id="aggiungi">Aggiungi Comm.</button>
+          <button id="indietro">Torna a Home</button>
+          <button id="aggiungi">Aggiungi Comm.</button>
         </div>
         <div id="box-comm"></div>
+        <div id="box-lett" style="display: none;">
+          <button id="chiudi">X</button>
+          <h1 id="titolo-comm"></h1>
+          <br><br>
+          <div id="corpo-comm"></div><br><br><br>
+          <button id="elimina">Elimina Comm.</button>
+        </div>
         <div id="lett-comm" style="display: none;">
-            <div id="Titolo"></div>
-            <div id="Corpo"></div>
+          <div id="inserimento">
+            <button id="chiudi">X</button><br><b>
+            <label for="titolo">Titolo:</label> <br>
+            <textarea name="Titolo" id="titolo" cols="30" rows="1"></textarea><br><br>
+            <label for="corpo">Corpo:</label> <br>
+            <textarea name="Corpo" id="corpo" cols="30" rows="10"></textarea><br>
+            <button id="pubblica">Pubblica</button>
+            </b>
+          </div>
         </div>
       </main>
 </body>

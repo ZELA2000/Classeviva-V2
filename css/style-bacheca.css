@@ -14,3 +14,46 @@
     text-align: right;
     margin: 10px;
 }
+#inserimento{
+    padding: 1em;
+    background-color: #fff;
+    margin: 20px 20px 20px 20px;
+    border-radius: 0.5em;
+}
+#titolo{
+    width: 80%;
+}
+#corpo{
+    width: 80%;
+}
+#chiudi{
+    position: relative;
+    left: 98%;
+    background-color: #fff;
+    border: 0px;
+    font-size: 1.5em;
+}
+#pubblica{
+    font-size: 2em;
+    background-color: #e7e7e7;
+    border-radius: 0.5em;
+    padding: 0.4em;
+    border: 1px solid black;
+}
+#pubblica:hover{
+    background-color: #d1d1d1;
+}
+.comm{
+    width: 100%;
+    text-align: left;
+    padding-left: 3em;
+    margin-top: 1em;
+    border-radius: 0px;
+    border: 0px;
+    border-bottom: 2px solid #990c18;
+    font-size: 1.8em;
+}
+#box-lett{
+    background-color: #fff;
+    
+}
