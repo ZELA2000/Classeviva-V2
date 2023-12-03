@@ -9,7 +9,7 @@ $(document).ready(function(){
     $("#accedi").click(function(){
         let passGet = document.getElementById("password").value;
         if(passGet == pass){
-            Cookies2.set("Login", "True");
+            Cookies2.set("Login", "True", { sameSite: 'strict' });
             window.location.replace("home.html");
         }
     });

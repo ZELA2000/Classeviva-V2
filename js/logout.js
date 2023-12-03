@@ -6,7 +6,7 @@ if(Cookies2.get("Login") != "True"){
 
 $(document).ready(function(){
     $("#logout").click(function(){
-        Cookies2.set("Login", "False")
+        Cookies2.set("Login", "False", { sameSite: 'strict' })
         window.location.replace("index.html");
     });
 });

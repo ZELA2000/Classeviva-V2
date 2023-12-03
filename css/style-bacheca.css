@@ -1,20 +1,4 @@
-#indietro, #aggiungi{
-    width: 7em;
-    height: 4em;
-    background-color: #e7e7e7;
-    border: 1px solid black;
-    border-radius: 0.5em;
-    padding: 5px;
-}
-#indietro:hover, #aggiungi:hover{
-    background-color: #d1d1d1;
-}
-
-#bottoni{
-    text-align: right;
-    margin: 10px;
-}
-#inserimento{
+#inserimento, #box-lett{
     padding: 1em;
     background-color: #fff;
     margin: 20px 20px 20px 20px;
@@ -26,12 +10,13 @@
 #corpo{
     width: 80%;
 }
-#chiudi{
+.chiudi{
     position: relative;
     left: 98%;
     background-color: #fff;
     border: 0px;
     font-size: 1.5em;
+    z-index: 1;
 }
 #pubblica{
     font-size: 2em;
@@ -41,6 +26,14 @@
     border: 1px solid black;
 }
 #pubblica:hover{
+    background-color: #d1d1d1;
+}
+#elimina{
+    background-color: #e7e7e7;
+    border-radius: 0.5em;
+    border: 1px solid black;
+}
+#elimina:hover{
     background-color: #d1d1d1;
 }
 .comm{

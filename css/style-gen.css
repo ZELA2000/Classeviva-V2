@@ -37,3 +37,19 @@ header{
 #account{
     width: 80%;
 }
+#indietro, #aggiungi{
+    width: 7em;
+    height: 4em;
+    background-color: #e7e7e7;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    padding: 5px;
+}
+#indietro:hover, #aggiungi:hover{
+    background-color: #d1d1d1;
+}
+
+#bottoni{
+    text-align: right;
+    margin: 10px;
+}

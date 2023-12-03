@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
+  <head>
+    <!--parte universale (o quasi) per tutte le schermate-->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style-bacheca.css" />
@@ -11,38 +12,48 @@
     <script src=" https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
     <script src="js/logout.js"></script>
     <script src="js/bacheca.js"></script>
-</head>
-<body>
+  </head>
+  <body>
+    <!--header con l'account e il bottone logout (universale per tutte le pagine)-->
     <header>
-        <div id="account"><b>Account selezionato: Giacobazzi Oscavator</b></div>
-        <div id="box-logout">
-          <input type="submit" id="logout" value="Logout" />
-        </div>
-      </header>
-      <main>
-        <div id="bottoni">
-          <button id="indietro">Torna a Home</button>
-          <button id="aggiungi">Aggiungi Comm.</button>
-        </div>
-        <div id="box-comm"></div>
-        <div id="box-lett" style="display: none;">
-          <button id="chiudi">X</button>
-          <h1 id="titolo-comm"></h1>
-          <br><br>
-          <div id="corpo-comm"></div><br><br><br>
-          <button id="elimina">Elimina Comm.</button>
-        </div>
-        <div id="lett-comm" style="display: none;">
-          <div id="inserimento">
-            <button id="chiudi">X</button><br><b>
-            <label for="titolo">Titolo:</label> <br>
-            <textarea name="Titolo" id="titolo" cols="30" rows="1"></textarea><br><br>
-            <label for="corpo">Corpo:</label> <br>
-            <textarea name="Corpo" id="corpo" cols="30" rows="10"></textarea><br>
+      <div id="account"><b>Account selezionato: Giacobazzi Oscavator</b></div>
+      <div id="box-logout">
+        <input type="submit" id="logout" value="Logout" />
+      </div>
+    </header>
+    <!--main-->
+    <main>
+      <!--bottoni universali che devono essere presenti in tutte le schermate-->
+      <div id="bottoni">
+        <button id="indietro">Torna<br />a Home</button>
+        <button id="aggiungi">Aggiungi Comm.</button>
+      </div>
+      <!--box con le comunicazioni salvate-->
+      <div id="box-comm"></div>
+      <!--box per la lettura delle comunicazioni, di base nascosto-->
+      <div id="box-lett" style="display: none">
+        <button class="chiudi">X</button>
+        <h1 id="titolo-comm"></h1>
+        <br /><br />
+        <div id="corpo-comm"></div>
+        <br /><br /><br />
+        <button id="elimina">Elimina Comm.</button>
+      </div>
+      <!--box per la creazione della comunicazione, di base nascosto-->
+      <div id="lett-comm" style="display: none">
+        <div id="inserimento">
+          <button class="chiudi">X</button><br />
+          <b>
+            <label for="titolo">Titolo:</label> <br />
+            <textarea name="Titolo" id="titolo" cols="30" rows="1"></textarea>
+            <br /><br />
+            <label for="corpo">Corpo:</label> <br />
+            <textarea name="Corpo" id="corpo" cols="30" rows="10"></textarea>
+            <br />
             <button id="pubblica">Pubblica</button>
-            </b>
-          </div>
+          </b>
         </div>
-      </main>
-</body>
+      </div>
+    </main>
+  </body>
 </html>
