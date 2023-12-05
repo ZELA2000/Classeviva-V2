@@ -70,7 +70,7 @@ function elimina(id){
         Cookies3.set("TitComm"+i, Cookies3.get("TitComm"+(i+1)), { sameSite: 'strict' });
         Cookies3.set("CorpoComm"+i, Cookies3.get("CorpoComm"+(i+1)), { sameSite: 'strict' });
     }
-    i = Cookies3.get("NComm")
+    i = Cookies3.get("NComm");
     Cookies3.remove("TitComm"+i, { path: '' }, { sameSite: 'strict' });
     Cookies3.remove("CorpoComm"+i, { path: '' }, { sameSite: 'strict' });
     window.location.reload();
