@@ -26,6 +26,37 @@
         <button id="indietro">Torna<br />a Home</button>
         <button id="aggiungi">Aggiungi<br />Stud.</button>
       </div>
+      <!--box lista classi-->
+      <div id="list-studenti"></div>
+      <!--box lettura dettagli studente-->
+      <div id="box-lettura" style="display: none">
+        <button class="chiudi">X</button><br />
+        Nome:
+        <div id="nome-lett"></div>
+        <br />
+        Cognome:
+        <div id="cognome-lett"></div>
+        <br />
+        Classe:
+        <div id="classe-lett"></div>
+        <br />
+        <button id="elimina">Elimina stud.</button>
+      </div>
+      <!--box per la creazione di classe, di base nascosto-->
+      <div id="lett-studente" style="display: none">
+        <div id="inserimento">
+          <button class="chiudi">X</button><br />
+          <b>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" />
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" />
+            <label for="classe">Classe di appartenenza:</label>
+            <select name="classi" id="classe"></select>
+            <button id="pubblica">Pubblica</button>
+          </b>
+        </div>
+      </div>
     </main>
   </body>
 </html>
