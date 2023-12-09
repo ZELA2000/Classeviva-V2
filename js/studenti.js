@@ -11,9 +11,11 @@ $(document).ready(function(){
 $(document).ready(function(){
     //prendo il numero di classi
     let i = CookiesStudenti.get("NStudenti");
-    //se non ci sono classi inizializzo i a 0
-    if(i==undefined){
+    //se non ci sono studenti inizializzo i a 0
+    if(i==undefined || i==0){
         i=0;
+    }else{
+        $("#errore").css({"display":"none"});
     }
     //ciclo per la scrittura di tutte le classi salvate
     for(let j=0 ; j<i; j++){
@@ -30,13 +32,17 @@ $(document).ready(function(){
         $("#box-lettura").css({"display":"none"});
         $("#list-studenti").css({"display":"block"});
     });
-    //funzione per il bottone per aggiungere una classe
+    //funzione per il bottone per aggiungere uno studente
     $("#aggiungi").click(function(){
+    //controllo se c'è almeno una classe
+    if(CookiesStudenti.get("NClassi")==0){
+        alert("ATTENZIONE: non è presente alcuna classe a cui associare lo studente")
+    }
         $("#lett-studente").css({"display":"block"});
         $("#list-studenti").css({"display":"none"});
         let listaStudenti = "";
         for(j=0;j<CookiesStudenti.get("NClassi");j++){
-            listaStudenti += "<option value='" + j + "'> "+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "</option>"; 
+            listaStudenti += "<option value='" + CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "'> "+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "</option>"; 
         }
         $("#classe").html(listaStudenti);
     });
@@ -64,7 +70,7 @@ function leggi(id){
     document.getElementById("elimina").setAttribute("onclick","elimina(" + id +")");
     $("#nome-lett").append(CookiesStudenti.get("Nome"+id));
     $("#cognome-lett").append(CookiesStudenti.get("Cognome"+id));
-    $("#classe-lett").append(CookiesStudenti.get("Classe"+id)+CookiesStudenti.get("Sezione"+id));
+    $("#classe-lett").append(CookiesStudenti.get("ClasseStrud"+id));
 }
 
 //funzione per l'eliminazione della comunicazione e quindi anche del cookie

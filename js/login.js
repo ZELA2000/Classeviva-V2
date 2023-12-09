@@ -12,5 +12,9 @@ $(document).ready(function(){
             Cookies2.set("Login", "True", { sameSite: 'strict' });
             window.location.replace("home.html");
         }
+        else{
+            $("#password").css({"border-color":"red"});
+            alert("Password non corretta"); 
+        }
     });
 });

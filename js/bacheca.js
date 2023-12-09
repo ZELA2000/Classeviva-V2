@@ -13,8 +13,10 @@ $(document).ready(function(){
     //prendo il numero di comunicazioni
     let i = Cookies3.get("NComm");
     //se non ci sono comunicazioni inizializzo i a 0
-    if(i==undefined){
+    if(i==undefined || i==0){
         i=0;
+    }else{
+        $("#errore").css({"display":"none"});
     }
     //ciclo per la scrittura di tutte le comunicazioni salvate
     for(let j=0 ; j<i; j++){
@@ -48,6 +50,21 @@ $(document).ready(function(){
             i++;
             Cookies3.set("NComm", i, { sameSite: 'strict' });
             window.location.reload();
+        }
+    //Verifica se sono stati inseriti il titolo e il corpo
+        else if($("#titolo").val()=="" && $("#corpo").val()!=""){
+            alert("ATTENZIONE: inserire un titolo per la comunicazione");
+            $("#titolo").css("border-color","red");
+        }
+        else if($("#titolo").val()!="" && $("#corpo").val()==""){
+            alert("ATTENZIONE: inserire il corpo della comunicazione");
+            $("#corpo").css("border-color","red");
+           
+        }
+        else if($("#titolo").val()=="" && $("#corpo").val()==""){
+            alert("COMUNICAZIONE VUOTA: prima di pubblicarla assicurati di aver compilato sia il titolo sia il corpo di essa");
+            $("#corpo").css("border-color","red");
+            $("#titolo").css("border-color","red");
         }
     });
 });

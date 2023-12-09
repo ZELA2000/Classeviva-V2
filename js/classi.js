@@ -13,8 +13,10 @@ $(document).ready(function(){
     //prendo il numero di classi
     let i = CookiesClassi.get("NClassi");
     //se non ci sono classi inizializzo i a 0
-    if(i==undefined){
+    if(i==undefined || i==0){
         i=0;
+    }else{
+        $("#errore").css({"display":"none"});
     }
     //funzione per il bottone X presente nelle schermate di lettura classe e creazione classe
     $(".chiudi").click(function(){
@@ -58,7 +60,7 @@ function leggi(id){
     $("#classe-lett").append("Classe: " + CookiesClassi.get("Classe"+id) + CookiesClassi.get("Sezione"+id));
     let lista = "Alunni della classe: <ul>";
     for(i=0;i<CookiesClassi.get("NStudenti");i++){
-        if(CookiesClassi.get("ClasseStrud"+i)==id){
+        if(CookiesClassi.get("ClasseStrud"+i)==CookiesClassi.get("Classe"+id)+CookiesClassi.get("Sezione"+id)){
             lista += "<li>" + CookiesClassi.get("Nome"+i) + " " + CookiesClassi.get("Cognome"+i) + "</li>";
         }
     }
@@ -68,49 +70,27 @@ function leggi(id){
 
 //funzione per l'eliminazione
 function elimina(id){
-    let j=0;
-    let ver = true;
-    let tmp = -1;
-    let tmp2 = 0;
-    let ctm = 0;
-    let NStudenti = parseInt(CookiesClassi.get("NStudenti"));
-    while(ver){
-        for(i=0;i<NStudenti&&tmp==-1;i++){
-            if(CookiesClassi.get("ClasseStrud"+i)==id){
-                tmp=i;
-                if(tmp2==0){
-                    tmp2=tmp;
-                }
-                ctm++;
-                ver=true;
-            }else{
-                tmp=-1;
+    let nStud = parseInt(CookiesClassi.get("NStudenti"));
+    let i;
+    for(i=0;i<=nStud;i++){
+        if(CookiesClassi.get("ClasseStrud"+i)==CookiesClassi.get("Classe"+id)+CookiesClassi.get("Sezione"+id)){
+            for(j=i;j<nStud;j++){
+                CookiesClassi.set("Nome"+j, CookiesClassi.get("Nome"+(j+1)), { sameSite: 'strict' });
+                CookiesClassi.set("Cognome"+j, CookiesClassi.get("Cognome"+(j+1)), {sameSite: 'strict'});
+                CookiesClassi.set("ClasseStrud"+j, CookiesClassi.get("ClasseStrud"+(j+1)), {sameSite: 'strict'});
             }
-        }
-        if(tmp!=-1){
-            for(i=tmp;i<NStudenti;i++){
-                CookiesClassi.set("Nome"+i, CookiesClassi.get("Nome"+(i+1)), {sameSite: 'strict'});
-                CookiesClassi.set("Cognome"+i, CookiesClassi.get("Cognome"+(i+1)), {sameSite: 'strict'});
-                CookiesClassi.set("ClasseStrud"+i, CookiesClassi.get("ClasseStrud"+(i+1)), {sameSite: 'strict'});    
-            }
-            tmp=-1;
-        }else{
-            ver=false;
+            nStud=nStud-1;
+            CookiesClassi.remove("Nome"+nStud, {path:''},{sameSite: 'strict'});
+            CookiesClassi.remove("Cognome"+nStud, {path:''},{sameSite: 'strict'});
+            CookiesClassi.remove("ClasseStrud"+nStud, {path:''},{sameSite: 'strict'});
+            i=0;
+            CookiesClassi.set("NStudenti", nStud, {sameSite:'strict'});
         }
     }
-    for(i=CookiesClassi.get("NStudenti")-ctm;i<CookiesClassi.get("NStudenti");i++){
-        CookiesClassi.remove("Nome"+i, { path: '' }, { sameSite: 'strict' });
-        CookiesClassi.remove("Cognome"+i, { path: '' }, { sameSite: 'strict' });
-        CookiesClassi.remove("ClasseStrud"+i, {path: ''}, {sameSite: 'Strict'});
-    }
-    CookiesClassi.set("NStudenti", CookiesClassi.get("NStudenti")-ctm, { sameSite: 'strict' });
     CookiesClassi.set("NClassi", CookiesClassi.get("NClassi")-1, {sameSite: 'strict'});
-    for(i=tmp2;i<CookiesClassi.get("NClassi");i++){
+    for(i=id;i<CookiesClassi.get("NClassi");i++){
         CookiesClassi.set("Classe"+i, CookiesClassi.get("Classe"+(i+1)), { sameSite: 'strict' });
         CookiesClassi.set("Sezione"+i, CookiesClassi.get("Sezione"+(i+1)), { sameSite: 'strict' });
-    }
-    for(i=id; i<CookiesClassi.get("NStudenti");i++){
-        CookiesClassi.set("ClasseStrud"+i, CookiesClassi.get("ClasseStrud"+i)-1, {sameSite: 'strict'});
     }
     i = CookiesClassi.get("NClassi");
     CookiesClassi.remove("Classe"+i, { path: '' }, { sameSite: 'strict' });
