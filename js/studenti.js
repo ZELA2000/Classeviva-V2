@@ -35,16 +35,17 @@ $(document).ready(function(){
     //funzione per il bottone per aggiungere uno studente
     $("#aggiungi").click(function(){
     //controllo se c'è almeno una classe
-    if(CookiesStudenti.get("NClassi")==0){
-        alert("ATTENZIONE: non è presente alcuna classe a cui associare lo studente")
-    }
-        $("#lett-studente").css({"display":"block"});
-        $("#list-studenti").css({"display":"none"});
-        let listaStudenti = "";
-        for(j=0;j<CookiesStudenti.get("NClassi");j++){
-            listaStudenti += "<option value='" + CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "'> "+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "</option>"; 
+        if(CookiesStudenti.get("NClassi")==0||CookiesStudenti.get("NClassi")==undefined){
+            alert("ATTENZIONE: non è presente alcuna classe a cui associare lo studente")
+        }else{
+            $("#lett-studente").css({"display":"block"});
+            $("#list-studenti").css({"display":"none"});
+            let listaStudenti = "";
+            for(j=0;j<CookiesStudenti.get("NClassi");j++){
+                listaStudenti += "<option value='" + CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "'> "+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "</option>"; 
+            }
+            $("#classe").html(listaStudenti);
         }
-        $("#classe").html(listaStudenti);
     });
     //funzione per salvare le impostazioni
     $("#pubblica").click(function(){
