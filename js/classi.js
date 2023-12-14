@@ -37,6 +37,7 @@ $(document).ready(function(){
     $("#aggiungi").click(function(){
         $("#lett-classe").css({"display":"block"});
         $("#list-classi").css({"display":"none"});
+        $("#box-lettura").css({"display":"none"});
     });
     //funzione per salvare le impostazioni
     $("#pubblica").click(function(){
@@ -54,6 +55,7 @@ $(document).ready(function(){
 function leggi(id){
     $("#list-classi").css({"display":"none"});
     $("#box-lettura").css({"display":"block"});
+    $("#lett-classe").css({"display":"none"});
     document.getElementById("classe-lett").innerHTML = "";
     document.getElementById("list-stud").innerHTML = "";
     document.getElementById("elimina").setAttribute("onclick","elimina(" + id +")");

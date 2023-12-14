@@ -31,6 +31,7 @@ $(document).ready(function(){
     $("#aggiungi").click(function(){
         $("#lett-comm").css({"display":"block"});
         $("#box-comm").css({"display":"none"});
+        $("#box-lett").css({"display":"none"});
         document.getElementById("titolo").value = "";
         document.getElementById("corpo").value = "";
     });
@@ -73,6 +74,7 @@ $(document).ready(function(){
 function leggi(id){
     $("#box-comm").css({"display":"none"});
     $("#box-lett").css({"display":"block"});
+    $("#lett-comm").css({"display":"none"});
     document.getElementById("titolo-comm").innerHTML = "";
     document.getElementById("corpo-comm").innerHTML = "";
     document.getElementById("elimina").setAttribute("onclick","elimina(" + id +")");

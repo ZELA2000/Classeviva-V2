@@ -40,6 +40,7 @@ $(document).ready(function(){
         }else{
             $("#lett-studente").css({"display":"block"});
             $("#list-studenti").css({"display":"none"});
+            $("#box-lettura").css({"display":"none"});
             let listaStudenti = "";
             for(j=0;j<CookiesStudenti.get("NClassi");j++){
                 listaStudenti += "<option value='" + CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "'> "+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "</option>"; 
@@ -65,6 +66,7 @@ $(document).ready(function(){
 function leggi(id){
     $("#list-studenti").css({"display":"none"});
     $("#box-lettura").css({"display":"block"});
+    $("#lett-studente").css({"display":"none"});
     document.getElementById("nome-lett").innerHTML = "";
     document.getElementById("cognome-lett").innerHTML = "";
     document.getElementById("classe-lett").innerHTML = "";
