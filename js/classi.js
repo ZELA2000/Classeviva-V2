@@ -73,9 +73,46 @@ function leggi(id){
 //funzione per l'eliminazione
 function elimina(id){
     let nStud = parseInt(CookiesClassi.get("NStudenti"));
-    let i;
+    let nVoti;
+    let nNote;
+    let i=0;
     for(i=0;i<=nStud;i++){
         if(CookiesClassi.get("ClasseStrud"+i)==CookiesClassi.get("Classe"+id)+CookiesClassi.get("Sezione"+id)){
+            nVoti = parseInt(CookiesClassi.get("NVoti"));
+            let j;
+            for(j=0;j<=nVoti;j++){
+                if(CookiesClassi.get("PersVoto"+j)==CookiesClassi.get("Nome"+i)+" "+CookiesClassi.get("Cognome"+i)){
+                    for(k=j;k<nVoti;k++){
+                        CookiesClassi.set("PersVoto"+k, CookiesClassi.get("PersVoto"+(k+1)), { sameSite: 'strict' });
+                        CookiesClassi.set("DescrizioneValutazione"+k, CookiesClassi.get("DescrizioneValutazione"+(k+1)), { sameSite: 'strict' });
+                        CookiesClassi.set("DataValutazione"+k, CookiesClassi.get("DataValutazione"+(k+1)), { sameSite: 'strict' });
+                        CookiesClassi.set("Valutazione"+k, CookiesClassi.get("Valutazione"+(k+1)), { sameSite: 'strict' });
+                    }
+                    nVoti=nVoti-1;
+                    CookiesClassi.remove("PersVoto"+nVoti, {path:''},{sameSite: 'strict'});
+                    CookiesClassi.remove("DescrizioneValutazione"+nVoti, {path:''},{sameSite: 'strict'});
+                    CookiesClassi.remove("DataValutazione"+nVoti, {path:''},{sameSite: 'strict'});
+                    CookiesClassi.remove("Valutazione"+nVoti, {path:''},{sameSite: 'strict'});
+                    j--;
+                    CookiesClassi.set("NVoti", nVoti, {sameSite:'strict'});
+                }
+            }
+            nNote = parseInt(CookiesClassi.get("NNote"));
+            for(j=0;j<=nNote;j++){
+                if(CookiesClassi.get("PersNota"+j)==CookiesClassi.get("Nome"+i)+" "+CookiesClassi.get("Cognome"+i)){
+                    for(k=j;k<nNote;k++){
+                        CookiesClassi.set("PersNota"+k, CookiesClassi.get("PersNota"+(k+1)), { sameSite: 'strict' });
+                        CookiesClassi.set("TestoNota"+k, CookiesClassi.get("TestoNota"+(k+1)), { sameSite: 'strict' });
+                        CookiesClassi.set("DataNota"+k, CookiesClassi.get("DataNota"+(k+1)), { sameSite: 'strict' });
+                    }
+                    nNote=nNote-1;
+                    CookiesClassi.remove("PersNota"+nNote, {path:''},{sameSite: 'strict'});
+                    CookiesClassi.remove("TestoNota"+nNote, {path:''},{sameSite: 'strict'});
+                    CookiesClassi.remove("DataNota"+nNote, {path:''},{sameSite: 'strict'});
+                    j--;
+                    CookiesClassi.set("NNote", nNote, {sameSite:'strict'});
+                }
+            }
             for(j=i;j<nStud;j++){
                 CookiesClassi.set("Nome"+j, CookiesClassi.get("Nome"+(j+1)), { sameSite: 'strict' });
                 CookiesClassi.set("Cognome"+j, CookiesClassi.get("Cognome"+(j+1)), {sameSite: 'strict'});
@@ -85,7 +122,7 @@ function elimina(id){
             CookiesClassi.remove("Nome"+nStud, {path:''},{sameSite: 'strict'});
             CookiesClassi.remove("Cognome"+nStud, {path:''},{sameSite: 'strict'});
             CookiesClassi.remove("ClasseStrud"+nStud, {path:''},{sameSite: 'strict'});
-            i=0;
+            i--;
             CookiesClassi.set("NStudenti", nStud, {sameSite:'strict'});
         }
     }

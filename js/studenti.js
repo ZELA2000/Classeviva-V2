@@ -78,6 +78,41 @@ function leggi(id){
 
 //funzione per l'eliminazione della comunicazione e quindi anche del cookie
 function elimina(id){
+    let NVoti = parseInt(CookiesStudenti.get("NVoti"));
+    let i;
+    for(i=0;i<NVoti;i++){
+        if(CookiesStudenti.get("PersVoto"+i)==CookiesStudenti.get("Nome"+id)+" "+CookiesStudenti.get("Cognome"+id)){
+            for(let j=i;j<NVoti;j++){
+                CookiesStudenti.set("PersVoto"+j, CookiesStudenti.get("PersVoto"+(j+1)), { sameSite: 'strict' });
+                CookiesStudenti.set("DescrizioneValutazione"+j, CookiesStudenti.get("DescrizioneValutazione"+(j+1)), { sameSite: 'strict' });
+                CookiesStudenti.set("DataValutazione"+j, CookiesStudenti.get("DataValutazione"+(j+1)), { sameSite: 'strict' });
+                CookiesStudenti.set("Valutazione"+j, CookiesStudenti.get("Valutazione"+(j+1)), { sameSite: 'strict' });
+            }
+            NVoti=NVoti-1;
+            CookiesStudenti.remove("PersVoto"+NVoti, {path:''},{sameSite: 'strict'});
+            CookiesStudenti.remove("DescrizioneValutazione"+NVoti, {path:''},{sameSite: 'strict'});
+            CookiesStudenti.remove("DataValutazione"+NVoti, {path:''},{sameSite: 'strict'});
+            CookiesStudenti.remove("Valutazione"+NVoti, {path:''},{sameSite: 'strict'});
+            i--;
+            CookiesStudenti.set("NVoti", NVoti, {sameSite:'strict'});
+        }
+    }
+    let NNote = parseInt(CookiesStudenti.get("NNote"));
+    for(i=0;i<NNote;i++){
+        if(CookiesStudenti.get("PersNota"+i)==CookiesStudenti.get("Nome"+id)+" "+CookiesStudenti.get("Cognome"+id)){
+            for(let j=i;j<NNote;j++){
+                CookiesStudenti.set("PersNota"+j, CookiesStudenti.get("PersNota"+(j+1)), { sameSite: 'strict' });
+                CookiesStudenti.set("TestoNota"+j, CookiesStudenti.get("TestoNota"+(j+1)), { sameSite: 'strict' });
+                CookiesStudenti.set("DataNota"+j, CookiesStudenti.get("DataNota"+(j+1)), { sameSite: 'strict' });
+            }
+            NNote=NNote-1;
+            CookiesStudenti.remove("PersNota"+NNote, {path:''},{sameSite: 'strict'});
+            CookiesStudenti.remove("TestoNota"+NNote, {path:''},{sameSite: 'strict'});
+            CookiesStudenti.remove("DataNota"+NNote, {path:''},{sameSite: 'strict'});
+            i--;
+            CookiesStudenti.set("NNote", NNote, {sameSite:'strict'});
+        }
+    }	
     CookiesStudenti.set("NStudenti", CookiesStudenti.get("NStudenti")-1, { sameSite: 'strict' });
     for(i=id;i<CookiesStudenti.get("NStudenti");i++){
         CookiesStudenti.set("Nome"+i, CookiesStudenti.get("Nome"+(i+1)), { sameSite: 'strict' });

@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style-voti.css" />
     <link rel="stylesheet" href="css/style-gen.css" />
-    <link rel="shortcut icon" href="css/image/loco classeviva v2.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="css/image/logo cv2.png"
+      type="image/x-icon"
+    />
     <title>Classeviva V2 - Voti</title>
     <script src="js/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
@@ -20,9 +24,84 @@
       </div>
     </header>
     <main>
+      <!--bottoni per tornare indietro e fare nuovi alunni-->
       <div id="bottoni">
         <button id="indietro">Torna<br />a Home</button>
-        <button id="aggiungi">Aggiungi <br />Voto</button>
+        <button id="aggiungi">Aggiungi<br />Valutazione</button>
+      </div>
+      <!--box lista classi-->
+      <div id="list-voti">
+        <div id="errore">Non ci sono valutazioni registrate</div>
+      </div>
+      <!--box lettura dettagli studente-->
+      <div id="box-voto" style="display: none">
+        <button class="chiudi">X</button><br />
+        Studente:
+        <div id="studente-associato"></div>
+        <br />
+        Valutazione:
+        <div id="voto-lett"></div>
+        <br />
+        Descrizione:
+        <div id="descrizione-lett"></div>
+        <br />
+        Data di assegnazione:
+        <div id="data-valutazione"></div>
+        <br />
+        <button id="elimina">Elimina Valutazione</button>
+      </div>
+      <!--box per la creazione di classe, di base nascosto-->
+      <div id="lett-voto" style="display: none">
+        <div id="inserimento">
+          <button class="chiudi">X</button><br />
+          <b>
+            <label for="studenti">Studente:</label>
+            <select name="studente" id="studenti"></select>
+            <br />
+            <label for="voto">Voto:</label>
+            <select name="valutazioni" id="voto">
+              <option value="2">2</option>
+              <option value="2+">2+</option>
+              <option value="2.5">2,5</option>
+              <option value="3-">3-</option>
+              <option value="3">3</option>
+              <option value="3+">3+</option>
+              <option value="3.5">3,5</option>
+              <option value="4-">4-</option>
+              <option value="4">4</option>
+              <option value="4+">4+</option>
+              <option value="4.5">4,5</option>
+              <option value="5-">5-</option>
+              <option value="5">5</option>
+              <option value="5+">5+</option>
+              <option value="5.5">5,5</option>
+              <option value="6-">6-</option>
+              <option value="6" selected>6</option>
+              <option value="6+">6+</option>
+              <option value="6.5">6,5</option>
+              <option value="7-">7-</option>
+              <option value="7">7</option>
+              <option value="7+">7+</option>
+              <option value="7.5">7,5</option>
+              <option value="8-">8-</option>
+              <option value="8">8</option>
+              <option value="8+">8+</option>
+              <option value="8.5">8,5</option>
+              <option value="9-">9-</option>
+              <option value="9">9</option>
+              <option value="9+">9+</option>
+              <option value="9.5">9,5</option>
+              <option value="10-">10-</option>
+              <option value="10">10</option>
+            </select>
+            <br />
+            <label for="descrizione">Descrizione:</label><br />
+            <textarea cols="30" rows="4" id="descrizione"></textarea><br />
+            <label for="data">Data:</label>
+            <input type="date" name="Data" id="data" />
+            <button id="pubblica">Pubblica</button>
+          </b>
+        </div>
       </div>
     </main>
   </body>

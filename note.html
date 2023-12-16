@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style-note.css" />
     <link rel="stylesheet" href="css/style-gen.css" />
-    <link rel="shortcut icon" href="css/image/loco classeviva v2.png type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="css/image/logo cv2.png"
+      type="image/x-icon"
+    />
     <title>Classeviva V2 - Note</title>
     <script src="js/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
@@ -33,9 +37,15 @@
       <!--box lettura dettagli studente-->
       <div id="box-note" style="display: none">
         <button class="chiudi">X</button><br />
-        Studente: <div id="studente-associato"></div>
-        <div id="nota-lett"></div><br>
-        <div id="data-nota"></div><br>
+        Studente:
+        <div id="studente-associato"></div>
+        <br />
+        Corpo:
+        <div id="nota-lett"></div>
+        <br />
+        Data di assegnazione:
+        <div id="data-nota"></div>
+        <br />
         <button id="elimina">Elimina Nota</button>
       </div>
       <!--box per la creazione di classe, di base nascosto-->
@@ -44,9 +54,10 @@
           <button class="chiudi">X</button><br />
           <b>
             <label for="studenti">Studente:</label>
-            <select name="studente" id="studenti"></select><br>
-            <label for="corpo">Corpo:</label><br>
-            <textarea cols="30" rows="4" id="corpo"></textarea><br>
+            <select name="studente" id="studenti"></select
+            ><br />
+            <label for="corpo">Corpo:</label><br />
+            <textarea cols="30" rows="4" id="corpo"></textarea><br />
             <label for="data">Data:</label>
             <input type="date" name="Data" id="data" />
             <button id="pubblica">Pubblica</button>

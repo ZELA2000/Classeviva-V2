@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style-studenti.css" />
     <link rel="stylesheet" href="css/style-gen.css" />
-    <link rel="shortcut icon" href="css/image/loco classeviva v2.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="css/image/logo cv2.png"
+      type="image/x-icon"
+    />
     <title>Classeviva V2 - Studenti</title>
     <script src="js/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js "></script>
@@ -13,7 +17,6 @@
     <script src="js/studenti.js"></script>
   </head>
   <body>
-
     <header>
       <!--header con account-->
       <div id="account"><b>Account selezionato: Giacobazzi Oscavator</b></div>
@@ -29,7 +32,9 @@
         <button id="aggiungi">Aggiungi<br />Stud.</button>
       </div>
       <!--box lista classi-->
-      <div id="list-studenti"><div id="errore">Non ci sono studenti registrati.</div></div>
+      <div id="list-studenti">
+        <div id="errore">Non ci sono studenti registrati.</div>
+      </div>
       <!--box lettura dettagli studente-->
       <div id="box-lettura" style="display: none">
         <button class="chiudi">X</button><br />
@@ -50,11 +55,12 @@
           <button class="chiudi">X</button><br />
           <b>
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" />
+            <input type="text" id="nome" /><br /><br />
             <label for="cognome">Cognome:</label>
-            <input type="text" id="cognome" />
+            <input type="text" id="cognome" /><br /><br />
             <label for="classe">Classe di appartenenza:</label>
-            <select name="classi" id="classe"></select>
+            <select name="classi" id="classe"></select
+            ><br /><br />
             <button id="pubblica">Pubblica</button>
           </b>
         </div>

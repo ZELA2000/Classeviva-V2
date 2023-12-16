@@ -8,7 +8,7 @@ $(document).ready(function(){
     });
 });
 
-//funzione con tutto
+//funzione con tutto 
 $(document).ready(function(){
     //prendo il numero di classi
     let i = CookiesNote.get("NNote");
@@ -27,7 +27,7 @@ $(document).ready(function(){
         bott.innerHTML = "Nota di: "+ CookiesNote.get("PersNota"+j);
         $("#list-note").append(bott);
     }
-    //funzione per il bottone X presente nelle schermate di lettura classe e creazione classe
+    //funzione per il bottone X presente nelle schermate di lettura note e creazione nota
     $(".chiudi").click(function(){
         $("#lett-nota").css({"display":"none"});
         $("#box-note").css({"display":"none"});
@@ -47,19 +47,19 @@ $(document).ready(function(){
             }
             $("#studenti").html(listaNote);
         }
-        $("#pubblica").click(function(){
-            persNota = $("#studenti").val();
-            testo = $("#corpo").val();
-            data = $("#data").val();
-            CookiesNote.set("PersNota"+i, persNota, { sameSite: 'strict' });
-            CookiesNote.set("Testo"+i, testo, { sameSite: 'strict' });
-            CookiesNote.set("Data"+i, data, { sameSite: 'strict' });
-            i++;
-            CookiesNote.set("NNote", i, { sameSite: 'strict' });
-            window.location.reload();
-        });
     });
-})
+    $("#pubblica").click(function(){
+        persNota = $("#studenti").val();
+        testo = $("#corpo").val();
+        data = $("#data").val();
+        CookiesNote.set("PersNota"+i, persNota, { sameSite: 'strict' });
+        CookiesNote.set("TestoNota"+i, testo, { sameSite: 'strict' });
+        CookiesNote.set("DataNota"+i, data, { sameSite: 'strict' });
+        i++;
+        CookiesNote.set("NNote", i, { sameSite: 'strict' });
+        window.location.reload();
+    });
+});
 
 //funzione per leggere le note
 function leggi(id){
