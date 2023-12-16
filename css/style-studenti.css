@@ -1,0 +1,14 @@
+#box-lettura, #errore, #inserimento{
+    padding: 1em;
+    background-color: #fff;
+    margin: 20px 20px 20px 20px;
+    border-radius: 0.5em;
+}
+.chiudi{
+    position: relative;
+    left: 95%;
+    background-color: #fff;
+    border: 0px;
+    font-size: 1.5em;
+    z-index: 1;
+}

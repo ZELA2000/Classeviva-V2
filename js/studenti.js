@@ -42,7 +42,7 @@ $(document).ready(function(){
             $("#list-studenti").css({"display":"none"});
             $("#box-lettura").css({"display":"none"});
             let listaStudenti = "";
-            for(j=0;j<CookiesStudenti.get("NClassi");j++){
+            for(let j=0;j<CookiesStudenti.get("NClassi");j++){
                 listaStudenti += "<option value='" + CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "'> "+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "</option>"; 
             }
             $("#classe").html(listaStudenti);
@@ -62,7 +62,7 @@ $(document).ready(function(){
     });
 });
 
-//funzione per la lettura di una comunicazione
+//funzione per la lettura dello studente
 function leggi(id){
     $("#list-studenti").css({"display":"none"});
     $("#box-lettura").css({"display":"block"});

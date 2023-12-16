@@ -31,24 +31,22 @@
         <div id="errore">Non ci sono note registrate</div>
       </div>
       <!--box lettura dettagli studente-->
-      <div id="box-lettura" style="display: none">
+      <div id="box-note" style="display: none">
         <button class="chiudi">X</button><br />
-        Studente:
-        <div id="studente-lett"></div>
-        <div id="data-nota"></div>
-        <br />
-        <div id="nota-lett"></div>
+        Studente: <div id="studente-associato"></div>
+        <div id="nota-lett"></div><br>
+        <div id="data-nota"></div><br>
         <button id="elimina">Elimina Nota</button>
       </div>
       <!--box per la creazione di classe, di base nascosto-->
-      <div id="lett-studente" style="display: none">
+      <div id="lett-nota" style="display: none">
         <div id="inserimento">
           <button class="chiudi">X</button><br />
           <b>
             <label for="studenti">Studente:</label>
-            <select name="studenti" id="stud"></select>
-            <label for="corpo">Corpo:</label>
-            <input type="text" id="corpo" />
+            <select name="studente" id="studenti"></select><br>
+            <label for="corpo">Corpo:</label><br>
+            <textarea cols="30" rows="4" id="corpo"></textarea><br>
             <label for="data">Data:</label>
             <input type="date" name="Data" id="data" />
             <button id="pubblica">Pubblica</button>

@@ -25,12 +25,67 @@ $(document).ready(function(){
         bott.setAttribute("id", "comm-"+j);
         bott.setAttribute("onclick", "leggi(" + j + ")")
         bott.innerHTML = "Nota di: "+ CookiesNote.get("PersNota"+j);
-        $("#box-comm").append(bott);
+        $("#list-note").append(bott);
     }
     //funzione per il bottone X presente nelle schermate di lettura classe e creazione classe
     $(".chiudi").click(function(){
-        $("#lett-classe").css({"display":"none"});
-        $("#box-lettura").css({"display":"none"});
-        $("#list-classi").css({"display":"block"});
+        $("#lett-nota").css({"display":"none"});
+        $("#box-note").css({"display":"none"});
+        $("#list-note").css({"display":"block"});
+    });
+    //funzione per il bottone aggiungi
+    $("#aggiungi").click(function(){
+        if(CookiesNote.get("NStudenti")==0||CookiesNote.get("NStudenti")==undefined){
+            alert("ATTENZIONE: non è presente alcuno studente a cui associare la nota");
+        }else{
+            $("#lett-nota").css({"display":"block"});
+            $("#list-note").css({"display":"none"});
+            $("#box-note").css({"display":"none"});
+            let listaNote = "";
+            for(let j=0;j<CookiesNote.get("NStudenti");j++){
+                listaNote += "<option value='" + CookiesNote.get("Nome"+j)+ " " + CookiesNote.get("Cognome"+j) + "'> "+ CookiesNote.get("Nome"+j)+ " " + CookiesNote.get("Cognome"+j) + "</option>"; 
+            }
+            $("#studenti").html(listaNote);
+        }
+        $("#pubblica").click(function(){
+            persNota = $("#studenti").val();
+            testo = $("#corpo").val();
+            data = $("#data").val();
+            CookiesNote.set("PersNota"+i, persNota, { sameSite: 'strict' });
+            CookiesNote.set("Testo"+i, testo, { sameSite: 'strict' });
+            CookiesNote.set("Data"+i, data, { sameSite: 'strict' });
+            i++;
+            CookiesNote.set("NNote", i, { sameSite: 'strict' });
+            window.location.reload();
+        });
     });
 })
+
+//funzione per leggere le note
+function leggi(id){
+    $("#lett-nota").css({"display":"none"});
+    $("#list-note").css({"display":"none"});
+    $("#box-note").css({"display":"block"});
+    document.getElementById("studente-associato").innerHTML = "";
+    document.getElementById("nota-lett").innerHTML = "";
+    document.getElementById("data-nota").innerHTML = "";
+    document.getElementById("elimina").setAttribute("onclick", "elimina("+id+")");
+    $("#studente-associato").html(CookiesNote.get("PersNota"+id));
+    $("#nota-lett").html(CookiesNote.get("Testo"+id));
+    $("#data-nota").html(CookiesNote.get("Data"+id));
+}
+
+//funzione per eliminare le note
+function elimina(id){
+    CookiesNote.set("NNote", CookiesNote.get("NNote")-1, { sameSite: 'strict' });
+    for(let j=id;j<CookiesNote.get("NNote");j++){
+        CookiesNote.set("PersNota"+j, CookiesNote.get("PersNota"+(j+1)), { sameSite: 'strict' });
+        CookiesNote.set("Testo"+j, CookiesNote.get("Testo"+(j+1)), { sameSite: 'strict' });
+        CookiesNote.set("Data"+j, CookiesNote.get("Data"+(j+1)), { sameSite: 'strict' });
+    }
+    i = CookiesNote.get("NNote");
+    CookiesNote.remove("PersNota"+i);
+    CookiesNote.remove("Testo"+i);
+    CookiesNote.remove("Data"+i);
+    window.location.reload();
+}
