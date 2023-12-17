@@ -10,14 +10,6 @@
 #corpo{
     width: 80%;
 }
-.chiudi{
-    position: relative;
-    left: 95%;
-    background-color: #fff;
-    border: 0px;
-    font-size: 1.5em;
-    z-index: 1;
-}
 #pubblica{
     font-size: 2em;
     background-color: #e7e7e7;

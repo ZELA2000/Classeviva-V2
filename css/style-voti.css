@@ -1,0 +1,16 @@
+.comm{
+    width: 100%;
+    text-align: left;
+    padding-left: 3em;
+    margin-top: 1em;
+    border-radius: 0px;
+    border: 0px;
+    border-bottom: 2px solid #990c18;
+    font-size: 1.8em;
+}
+#inserimento, #box-voto, #errore{
+    padding: 1em;
+    background-color: #fff;
+    margin: 20px 20px 20px 20px;
+    border-radius: 0.5em;
+}
