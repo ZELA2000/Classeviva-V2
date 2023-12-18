@@ -32,6 +32,7 @@ $(document).ready(function(){
         $("#lett-voto").css({"display":"none"});
         $("#box-voto").css({"display":"none"});
         $("#list-voti").css({"display":"block"});
+        document.getElementById("modifica").removeAttribute("onclick");
     });
     //funzione per il bottone aggiungi
     $("#aggiungi").click(function(){
@@ -73,6 +74,7 @@ function leggi(id){
     document.getElementById("data-valutazione").innerHTML = "";
     document.getElementById("descrizione-lett").innerHTML = "";
     document.getElementById("elimina").setAttribute("onclick", "elimina("+id+")");
+    document.getElementById("modifica").setAttribute("onclick", "modifica("+id+")");
     $("#studente-associato").html(CookiesVoti.get("PersVoto"+id));
     $("#voto-lett").html(CookiesVoti.get("DescrizioneValutazione"+id));
     $("#data-valutazione").html(CookiesVoti.get("DataValutazione"+id));

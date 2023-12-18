@@ -23,6 +23,7 @@ $(document).ready(function(){
         $("#lett-classe").css({"display":"none"});
         $("#box-lettura").css({"display":"none"});
         $("#list-classi").css({"display":"block"});
+        document.getElementById("modifica").removeAttribute("onclick");
     });
     //ciclo per la scrittura di tutte le classi salvate
     for(let j=0 ; j<i; j++){
@@ -59,6 +60,7 @@ function leggi(id){
     document.getElementById("classe-lett").innerHTML = "";
     document.getElementById("list-stud").innerHTML = "";
     document.getElementById("elimina").setAttribute("onclick","elimina(" + id +")");
+    document.getElementById("modifica").setAttribute("onclick","modifica(" + id +")");
     $("#classe-lett").append("Classe: " + CookiesClassi.get("Classe"+id) + CookiesClassi.get("Sezione"+id));
     let lista = "Alunni della classe: <ul>";
     for(i=0;i<CookiesClassi.get("NStudenti");i++){

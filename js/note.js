@@ -32,6 +32,7 @@ $(document).ready(function(){
         $("#lett-nota").css({"display":"none"});
         $("#box-note").css({"display":"none"});
         $("#list-note").css({"display":"block"});
+        document.getElementById("modifica").removeAttribute("onclick");
     });
     //funzione per il bottone aggiungi
     $("#aggiungi").click(function(){
@@ -70,6 +71,7 @@ function leggi(id){
     document.getElementById("nota-lett").innerHTML = "";
     document.getElementById("data-nota").innerHTML = "";
     document.getElementById("elimina").setAttribute("onclick", "elimina("+id+")");
+    document.getElementById("modifica").setAttribute("onclick", "modifica("+id+")");
     $("#studente-associato").html(CookiesNote.get("PersNota"+id));
     $("#nota-lett").html(CookiesNote.get("TestoNota"+id));
     $("#data-nota").html(CookiesNote.get("DataNota"+id));

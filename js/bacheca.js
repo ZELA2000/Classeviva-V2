@@ -40,6 +40,7 @@ $(document).ready(function(){
         $("#lett-comm").css({"display":"none"});
         $("#box-lett").css({"display":"none"});
         $("#box-comm").css({"display":"block"});
+        document.getElementById("modifica").removeAttribute("onclick");
     });
     //funzione per il salvataggio del cookie con la nuova comunicazione
     $("#pubblica").click(function(){
@@ -78,6 +79,7 @@ function leggi(id){
     document.getElementById("titolo-comm").innerHTML = "";
     document.getElementById("corpo-comm").innerHTML = "";
     document.getElementById("elimina").setAttribute("onclick","elimina(" + id +")");
+    document.getElementById("modifica").setAttribute("onclick","modifica(" + id +")");
     $("#titolo-comm").append(Cookies3.get("TitComm"+id));
     $("#corpo-comm").append(Cookies3.get("CorpoComm"+id));
 }

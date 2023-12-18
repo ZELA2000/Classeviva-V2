@@ -53,7 +53,7 @@ header{
     width: 1.5em;
     height: 1.5em;
 }
-.modifica{
+#modifica{
     position: absolute;
     right: 4em;
     background-color: #fff;
@@ -61,7 +61,7 @@ header{
     border-radius: 0.5em;
     padding: 5px;
 }
-.modifica:hover{
+#modifica:hover{
     background-color: #d1d1d1;
 }	
 .chiudi{

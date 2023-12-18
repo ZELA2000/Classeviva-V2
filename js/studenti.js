@@ -31,6 +31,7 @@ $(document).ready(function(){
         $("#lett-studente").css({"display":"none"});
         $("#box-lettura").css({"display":"none"});
         $("#list-studenti").css({"display":"block"});
+        document.getElementById("modifica").removeAttribute("onclick");
     });
     //funzione per il bottone per aggiungere uno studente
     $("#aggiungi").click(function(){
@@ -71,6 +72,7 @@ function leggi(id){
     document.getElementById("cognome-lett").innerHTML = "";
     document.getElementById("classe-lett").innerHTML = "";
     document.getElementById("elimina").setAttribute("onclick","elimina(" + id +")");
+    document.getElementById("modifica").setAttribute("onclick","modifica(" + id +")");
     $("#nome-lett").append(CookiesStudenti.get("Nome"+id));
     $("#cognome-lett").append(CookiesStudenti.get("Cognome"+id));
     $("#classe-lett").append(CookiesStudenti.get("ClasseStrud"+id));
