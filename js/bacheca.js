@@ -32,6 +32,7 @@ $(document).ready(function(){
         $("#lett-comm").css({"display":"block"});
         $("#box-comm").css({"display":"none"});
         $("#box-lett").css({"display":"none"});
+        $("#modifica-box").css({"display":"none"});
         document.getElementById("titolo").value = "";
         document.getElementById("corpo").value = "";
     });
@@ -40,6 +41,7 @@ $(document).ready(function(){
         $("#lett-comm").css({"display":"none"});
         $("#box-lett").css({"display":"none"});
         $("#box-comm").css({"display":"block"});
+        $("#modifica-box").css({"display":"none"});
         document.getElementById("modifica").removeAttribute("onclick");
     });
     //funzione per il salvataggio del cookie con la nuova comunicazione
@@ -76,6 +78,7 @@ function leggi(id){
     $("#box-comm").css({"display":"none"});
     $("#box-lett").css({"display":"block"});
     $("#lett-comm").css({"display":"none"});
+    $("#modifica-box").css({"display":"none"});
     document.getElementById("titolo-comm").innerHTML = "";
     document.getElementById("corpo-comm").innerHTML = "";
     document.getElementById("elimina").setAttribute("onclick","elimina(" + id +")");
@@ -95,4 +98,22 @@ function elimina(id){
     Cookies3.remove("TitComm"+i, { path: '' }, { sameSite: 'strict' });
     Cookies3.remove("CorpoComm"+i, { path: '' }, { sameSite: 'strict' });
     window.location.reload();
+}
+
+function modifica(id){
+    $("#box-comm").css({"display":"none"});
+    $("#box-lett").css({"display":"none"});
+    $("#lett-comm").css({"display":"none"})
+    $("#modifica-box").css({"display":"block"});
+    document.getElementById("titoloMod").value = Cookies3.get("TitComm"+id);
+    document.getElementById("corpoMod").value = Cookies3.get("CorpoComm"+id);
+    $("#pubblicaMod").click(function(){
+        if($("#titoloMod").val()!="" || $("#corpoMod").val()!=""){
+            commTitoli = $("#titoloMod").val();
+            commCorpo = $("#corpoMod").val();
+            Cookies3.set("TitComm"+id, commTitoli, { sameSite: 'strict' });
+            Cookies3.set("CorpoComm"+id, commCorpo, { sameSite: 'strict' });
+            window.location.reload();
+        }
+    });
 }
