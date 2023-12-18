@@ -71,8 +71,8 @@ function leggi(id){
     document.getElementById("data-nota").innerHTML = "";
     document.getElementById("elimina").setAttribute("onclick", "elimina("+id+")");
     $("#studente-associato").html(CookiesNote.get("PersNota"+id));
-    $("#nota-lett").html(CookiesNote.get("Testo"+id));
-    $("#data-nota").html(CookiesNote.get("Data"+id));
+    $("#nota-lett").html(CookiesNote.get("TestoNota"+id));
+    $("#data-nota").html(CookiesNote.get("DataNota"+id));
 }
 
 //funzione per eliminare le note
@@ -84,8 +84,8 @@ function elimina(id){
         CookiesNote.set("Data"+j, CookiesNote.get("Data"+(j+1)), { sameSite: 'strict' });
     }
     i = CookiesNote.get("NNote");
-    CookiesNote.remove("PersNota"+i);
-    CookiesNote.remove("Testo"+i);
-    CookiesNote.remove("Data"+i);
+    CookiesNoteremove("PersNota"+i);
+    CookiesNote.remove("TestoNota"+i);
+    CookiesNote.remove("DataNota"+i); 
     window.location.reload();
 }
