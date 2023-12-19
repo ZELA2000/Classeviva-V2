@@ -32,6 +32,7 @@ $(document).ready(function(){
         $("#lett-voto").css({"display":"none"});
         $("#box-voto").css({"display":"none"});
         $("#list-voti").css({"display":"block"});
+        $("#modifica-box").css({"display":"none"});
         document.getElementById("modifica").removeAttribute("onclick");
     });
     //funzione per il bottone aggiungi
@@ -42,6 +43,7 @@ $(document).ready(function(){
             $("#lett-voto").css({"display":"block"});
             $("#list-voti").css({"display":"none"});
             $("#box-voto").css({"display":"none"});
+            $("#modifica-box").css({"display":"none"});
             let listaVoti = "";
             for(let j=0;j<CookiesVoti.get("NStudenti");j++){
                 listaVoti += "<option value='" + CookiesVoti.get("Nome"+j)+ " " + CookiesVoti.get("Cognome"+j) + "'> "+ CookiesVoti.get("Nome"+j)+ " " + CookiesVoti.get("Cognome"+j) + "</option>"; 
@@ -69,6 +71,7 @@ function leggi(id){
     $("#lett-voto").css({"display":"none"});
     $("#list-voti").css({"display":"none"});
     $("#box-voto").css({"display":"block"});
+    $("#modifica-box").css({"display":"none"});
     document.getElementById("studente-associato").innerHTML = "";
     document.getElementById("voto-lett").innerHTML = "";
     document.getElementById("data-valutazione").innerHTML = "";
@@ -96,4 +99,34 @@ function elimina(id){
     CookiesVoti.remove("DataValutazione"+i);
     CookiesVoti.remove("Valutazione"+i);
     window.location.reload();
+}
+
+function modifica(id){
+    $("#lett-voto").css({"display":"none"});
+    $("#list-voti").css({"display":"none"});
+    $("#box-voto").css({"display":"none"});
+    $("#modifica-box").css({"display":"block"});
+    let listaStudenti = "";
+    for(let j=0;j<CookiesVoti.get("NStudenti");j++){
+        listaStudenti += "<option id='"+ CookiesVoti.get("Nome"+j)+ " " + CookiesVoti.get("Cognome"+j) + "ver' value='" + CookiesVoti.get("Nome"+j)+ " " + CookiesVoti.get("Cognome"+j) + "'> "+ CookiesVoti.get("Nome"+j)+ " " + CookiesVoti.get("Cognome"+j) + "</option>"; 
+    }
+    $("#studentiMod").html(listaStudenti);
+    let voto = CookiesVoti.get("Valutazione"+id);
+    document.getElementById(voto).setAttribute("selected", "selected");
+    document.getElementById("dataMod").value = CookiesVoti.get("DataValutazione"+id);
+    document.getElementById("descrizioneMod").value = CookiesVoti.get("DescrizioneValutazione"+id);
+    document.getElementById(CookiesVoti.get("PersVoto"+id)+"ver").setAttribute("selected", "selected");
+    $("#pubblicaMod").click(function(){
+        if($("#dataMod").val()!="" || $("#descrizioneMod").val()!=""){
+            persVoto = $("#studentiMod").val();
+            data = $("#dataMod").val();
+            descrizione = $("#descrizioneMod").val();
+            valutazione = $("#votoMod").val();
+            CookiesVoti.set("PersVoto"+id, persVoto, { sameSite: 'strict' });
+            CookiesVoti.set("DataValutazione"+id, data, { sameSite: 'strict' });
+            CookiesVoti.set("DescrizioneValutazione"+id, descrizione, { sameSite: 'strict' });
+            CookiesVoti.set("Valutazione"+id, valutazione, { sameSite: 'strict' });
+            window.location.reload();
+        }
+    });
 }
