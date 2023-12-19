@@ -31,6 +31,7 @@ $(document).ready(function(){
         $("#lett-studente").css({"display":"none"});
         $("#box-lettura").css({"display":"none"});
         $("#list-studenti").css({"display":"block"});
+        $("#modifica-box").css({"display":"none"});
         document.getElementById("modifica").removeAttribute("onclick");
     });
     //funzione per il bottone per aggiungere uno studente
@@ -42,9 +43,10 @@ $(document).ready(function(){
             $("#lett-studente").css({"display":"block"});
             $("#list-studenti").css({"display":"none"});
             $("#box-lettura").css({"display":"none"});
+            $("#modifica-box").css({"display":"none"});
             let listaStudenti = "";
             for(let j=0;j<CookiesStudenti.get("NClassi");j++){
-                listaStudenti += "<option value='" + CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "'> "+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "</option>"; 
+                listaStudenti += "<option id='classe"+ j + "Or' value='" + CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "'> "+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "</option>"; 
             }
             $("#classe").html(listaStudenti);
         }
@@ -68,6 +70,7 @@ function leggi(id){
     $("#list-studenti").css({"display":"none"});
     $("#box-lettura").css({"display":"block"});
     $("#lett-studente").css({"display":"none"});
+    $("#modifica-box").css({"display":"none"});
     document.getElementById("nome-lett").innerHTML = "";
     document.getElementById("cognome-lett").innerHTML = "";
     document.getElementById("classe-lett").innerHTML = "";
@@ -126,4 +129,39 @@ function elimina(id){
     CookiesStudenti.remove("Cognome"+i, { path: '' }, { sameSite: 'strict' });
     CookiesStudenti.remove("ClasseStrud"+i, {path: ''}, {sameSite: 'Strict'});
     window.location.reload();
+}
+function modifica(id){
+    $("#list-studenti").css({"display":"none"});
+    $("#box-lettura").css({"display":"none"});
+    $("#lett-studente").css({"display":"none"})
+    $("#modifica-box").css({"display":"block"});
+    let listaStudenti = "";
+    for(let j=0;j<CookiesStudenti.get("NClassi");j++){
+        listaStudenti += "<option id='classe"+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "' value='" + CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "'> "+ CookiesStudenti.get("Classe"+j)+CookiesStudenti.get("Sezione"+j) + "</option>"; 
+    }
+    $("#classeMod").html(listaStudenti);
+    document.getElementById("nomeMod").value = CookiesStudenti.get("Nome"+id);
+    document.getElementById("cognomeMod").value = CookiesStudenti.get("Cognome"+id);
+    document.getElementById("classe"+CookiesStudenti.get("ClasseStrud"+id)).setAttribute("selected","selected");
+    $("#pubblicaMod").click(function(){
+        if($("#nomeMod").val()!="" || $("#cognomeMod").val()!=""){
+            nome = $("#nomeMod").val();
+            cognome = $("#cognomeMod").val();  
+            classe = $("#classeMod").val();
+            for(j=0;j<CookiesStudenti.get("NNote");j++){
+                if(CookiesStudenti.get("PersNota"+j)==CookiesStudenti.get("Nome"+id)+" "+CookiesStudenti.get("Cognome"+id)){
+                    CookiesStudenti.set("PersNota"+j, nome+" "+cognome, {sameSite:'strict'});
+                }
+            }
+            for(j=0;j<CookiesStudenti.get("NVoti");j++){
+                if(CookiesStudenti.get("PersVoto"+j)==CookiesStudenti.get("Nome"+id)+" "+CookiesStudenti.get("Cognome"+id)){
+                    CookiesStudenti.set("PersVoto"+j, nome+" "+cognome, {sameSite:'strict'});
+                }
+            }
+            CookiesStudenti.set("Nome"+id, nome, { sameSite: 'strict' });
+            CookiesStudenti.set("Cognome"+id, cognome, { sameSite: 'strict' });
+            CookiesStudenti.set("ClasseStrud"+id, classe, { sameSite: 'strict' });
+            window.location.reload();
+        }
+    });
 }

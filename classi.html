@@ -55,47 +55,94 @@
           <b>
             <label for="classe">Classe:</label>
             <select name="classi" id="classe">
-              <option value="1" selected>1^</option>
-              <option value="2">2^</option>
-              <option value="3">3^</option>
-              <option value="4">4^</option>
-              <option value="5">5^</option>
+              <option value="1" id="classe1Or">1^</option>
+              <option value="2" id="classe2Or">2^</option>
+              <option value="3" id="classe3Or">3^</option>
+              <option value="4" id="classe4Or">4^</option>
+              <option value="5" id="classe5Or">5^</option>
             </select>
             <br /><br />
             <label for="sezione">Sezione:</label>
             <select name="sezioni" id="sezione">
-              <option value="A" selected>A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
-              <option value="E">E</option>
-              <option value="F">F</option>
-              <option value="G">G</option>
-              <option value="H">H</option>
-              <option value="I">I</option>
-              <option value="J">J</option>
-              <option value="K">K</option>
-              <option value="L">L</option>
-              <option value="M">M</option>
-              <option value="N">N</option>
-              <option value="O">O</option>
-              <option value="P">P</option>
-              <option value="Q">Q</option>
-              <option value="R">R</option>
-              <option value="S">S</option>
-              <option value="T">T</option>
-              <option value="U">U</option>
-              <option value="V">V</option>
-              <option value="W">W</option>
-              <option value="X">X</option>
-              <option value="Y">Y</option>
-              <option value="Z">Z</option>
+              <option value="A" id="sezioneAOr">A</option>
+              <option value="B" id="sezioneBOr">B</option>
+              <option value="C" id="sezioneCOr">C</option>
+              <option value="D" id="sezioneDOr">D</option>
+              <option value="E" id="sezioneEOr">E</option>
+              <option value="F" id="sezioneFOr">F</option>
+              <option value="G" id="sezioneGOr">G</option>
+              <option value="H" id="sezioneHOr">H</option>
+              <option value="I" id="sezioneIOr">I</option>
+              <option value="J" id="sezioneJOr">J</option>
+              <option value="K" id="sezioneKOr">K</option>
+              <option value="L" id="sezioneLOr">L</option>
+              <option value="M" id="sezioneMOr">M</option>
+              <option value="N" id="sezioneNOr">N</option>
+              <option value="O" id="sezioneOOr">O</option>
+              <option value="P" id="sezionePOr">P</option>
+              <option value="Q" id="sezioneQOr">Q</option>
+              <option value="R" id="sezioneROr">R</option>
+              <option value="S" id="sezioneSOr">S</option>
+              <option value="T" id="sezioneTOr">T</option>
+              <option value="U" id="sezioneUOr">U</option>
+              <option value="V" id="sezioneVOr">V</option>
+              <option value="W" id="sezioneWOr">W</option>
+              <option value="X" id="sezioneXOr">X</option>
+              <option value="Y" id="sezioneYOr">Y</option>
+              <option value="Z" id="sezioneZOr">Z</option>
             </select>
             <br /><br /><br />
             <button id="pubblica">Pubblica</button>
           </b>
         </div>
       </div>
+      <!--box per la modifica di classe, di base nascosto-->
+      <div id="modifica-box" style="display: none">
+        <div id="inserimentoMod">
+          <button class="chiudi">X</button><br />
+          <b>
+            <label for="classeMod">Classe:</label>
+            <select name="classiMod" id="classeMod">
+              <option value="1" id="classe1">1^</option>
+              <option value="2" id="classe2">2^</option>
+              <option value="3" id="classe3">3^</option>
+              <option value="4" id="classe4">4^</option>
+              <option value="5" id="classe5">5^</option>
+            </select>
+            <br /><br />
+            <label for="sezioneMod">Sezione:</label>
+            <select name="sezioniMod" id="sezioneMod">
+              <option value="A" id="sezioneA">A</option>
+              <option value="B" id="sezioneB">B</option>
+              <option value="C" id="sezioneC">C</option>
+              <option value="D" id="sezioneD">D</option>
+              <option value="E" id="sezioneE">E</option>
+              <option value="F" id="sezioneF">F</option>
+              <option value="G" id="sezioneG">G</option>
+              <option value="H" id="sezioneH">H</option>
+              <option value="I" id="sezioneI">I</option>
+              <option value="J" id="sezioneJ">J</option>
+              <option value="K" id="sezioneK">K</option>
+              <option value="L" id="sezioneL">L</option>
+              <option value="M" id="sezioneM">M</option>
+              <option value="N" id="sezioneN">N</option>
+              <option value="O" id="sezioneO">O</option>
+              <option value="P" id="sezioneP">P</option>
+              <option value="Q" id="sezioneQ">Q</option>
+              <option value="R" id="sezioneR">R</option>
+              <option value="S" id="sezioneS">S</option>
+              <option value="T" id="sezioneT">T</option>
+              <option value="U" id="sezioneU">U</option>
+              <option value="V" id="sezioneV">V</option>
+              <option value="W" id="sezioneW">W</option>
+              <option value="X" id="sezioneX">X</option>
+              <option value="Y" id="sezioneY">Y</option>
+              <option value="Z" id="sezioneZ">Z</option>
+            </select>
+            <br /><br /><br />
+            <button id="pubblicaMod">Pubblica</button>
+          </b>
+        </div>
     </main>
   </body>
 </html>
