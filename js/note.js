@@ -32,6 +32,7 @@ $(document).ready(function(){
         $("#lett-nota").css({"display":"none"});
         $("#box-note").css({"display":"none"});
         $("#list-note").css({"display":"block"});
+        $("#modifica-box").css({"display":"none"});
         document.getElementById("modifica").removeAttribute("onclick");
     });
     //funzione per il bottone aggiungi
@@ -42,6 +43,7 @@ $(document).ready(function(){
             $("#lett-nota").css({"display":"block"});
             $("#list-note").css({"display":"none"});
             $("#box-note").css({"display":"none"});
+            $("#modifica-box").css({"display":"none"});
             let listaNote = "";
             for(let j=0;j<CookiesNote.get("NStudenti");j++){
                 listaNote += "<option value='" + CookiesNote.get("Nome"+j)+ " " + CookiesNote.get("Cognome"+j) + "'> "+ CookiesNote.get("Nome"+j)+ " " + CookiesNote.get("Cognome"+j) + "</option>"; 
@@ -67,6 +69,7 @@ function leggi(id){
     $("#lett-nota").css({"display":"none"});
     $("#list-note").css({"display":"none"});
     $("#box-note").css({"display":"block"});
+    $("#modifica-box").css({"display":"none"});
     document.getElementById("studente-associato").innerHTML = "";
     document.getElementById("nota-lett").innerHTML = "";
     document.getElementById("data-nota").innerHTML = "";
@@ -90,4 +93,29 @@ function elimina(id){
     CookiesNote.remove("TestoNota"+i);
     CookiesNote.remove("DataNota"+i); 
     window.location.reload();
+}
+
+function modifica(id){
+    $("#lett-nota").css({"display":"none"});
+    $("#list-note").css({"display":"none"});
+    $("#box-note").css({"display":"none"});
+    $("#modifica-box").css({"display":"block"});
+    let listaStudenti = "";
+    for(let j=0;j<CookiesNote.get("NStudenti");j++){
+        listaStudenti += "<option id='classe"+ CookiesNote.get("Nome"+j)+CookiesNote.get("Cognome"+j) + "' value='" + CookiesNote.get("Nome"+j)+ " " + CookiesNote.get("Cognome"+j) + "'> "+ CookiesNote.get("Nome"+j)+ " " + CookiesNote.get("Cognome"+j) + "</option>"; 
+    }
+    $("#studentiMod").html(listaStudenti);
+    document.getElementById("corpoMod").value = CookiesNote.get("TestoNota"+id);
+    document.getElementById("dataMod").value = CookiesNote.get("DataNota"+id);
+    $("#pubblicaMod").click(function(){
+        if($("#nota-mod").val()!="" || $("#data-mod").val()!=""){
+            persNota = $("#studentiMod").val();
+            testo = $("#corpoMod").val();
+            data = $("#dataMod").val();
+            CookiesNote.set("PersNota"+id, persNota, { sameSite: 'strict' });
+            CookiesNote.set("TestoNota"+id, testo, { sameSite: 'strict' });
+            CookiesNote.set("DataNota"+id, data, { sameSite: 'strict' });
+            window.location.reload();
+        }
+    });
 }

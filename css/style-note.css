@@ -8,7 +8,7 @@
     border-bottom: 2px solid #990c18;
     font-size: 1.8em;
 }
-#inserimento, #box-note, #errore{
+#inserimento, #box-note, #errore, #modifica-box{
     padding: 1em;
     background-color: #fff;
     margin: 20px 20px 20px 20px;
