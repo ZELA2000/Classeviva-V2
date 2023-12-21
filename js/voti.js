@@ -44,6 +44,8 @@ $(document).ready(function () {
             $("#list-voti").css({ "display": "none" });
             $("#box-voto").css({ "display": "none" });
             $("#modifica-box").css({ "display": "none" });
+            document.getElementById("descrizione").value = "";
+            document.getElementById("data").value = "";
             let listaVoti = "";
             for (let j = 0; j < CookiesVoti.get("NStudenti"); j++) {
                 listaVoti += "<option value='" + CookiesVoti.get("Nome" + j) + " " + CookiesVoti.get("Cognome" + j) + "'> " + CookiesVoti.get("Nome" + j) + " " + CookiesVoti.get("Cognome" + j) + "</option>";

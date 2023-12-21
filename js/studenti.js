@@ -44,6 +44,8 @@ $(document).ready(function () {
             $("#list-studenti").css({ "display": "none" });
             $("#box-lettura").css({ "display": "none" });
             $("#modifica-box").css({ "display": "none" });
+            document.getElementById("nome").value = "";
+            document.getElementById("cognome").value = "";
             let listaStudenti = "";
             for (let j = 0; j < CookiesStudenti.get("NClassi"); j++) {
                 listaStudenti += "<option id='classe" + j + "Or' value='" + CookiesStudenti.get("Classe" + j) + CookiesStudenti.get("Sezione" + j) + "'> " + CookiesStudenti.get("Classe" + j) + CookiesStudenti.get("Sezione" + j) + "</option>";

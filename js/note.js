@@ -44,6 +44,8 @@ $(document).ready(function () {
             $("#list-note").css({ "display": "none" });
             $("#box-note").css({ "display": "none" });
             $("#modifica-box").css({ "display": "none" });
+            document.getElementById("corpoN").value = "";
+            document.getElementById("data").value = "";
             let listaNote = "";
             for (let j = 0; j < CookiesNote.get("NStudenti"); j++) {
                 listaNote += "<option value='" + CookiesNote.get("Nome" + j) + " " + CookiesNote.get("Cognome" + j) + "'> " + CookiesNote.get("Nome" + j) + " " + CookiesNote.get("Cognome" + j) + "</option>";
