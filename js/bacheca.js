@@ -34,7 +34,7 @@ $(document).ready(function () {
         $("#box-lett").css({ "display": "none" });
         $("#modifica-box").css({ "display": "none" });
         document.getElementById("titolo").value = "";
-        document.getElementById("corpo").value = "";
+        document.getElementById("corpoC").value = "";
     });
     //funzione per il bottone X presente nelle schermate di lettura comunicazione e creazione comm.
     $(".chiudi").click(function () {
@@ -46,9 +46,9 @@ $(document).ready(function () {
     });
     //funzione per il salvataggio del cookie con la nuova comunicazione
     $("#pubblica").click(function () {
-        if ($("#titolo").val() != "" && $("#corpo").val() != "") {
+        if ($("#titolo").val() != "" && $("#corpoC").val() != "") {
             commTitoli = $("#titolo").val();
-            commCorpo = $("#corpo").val();
+            commCorpo = $("#corpoC").val();
             Cookies3.set("TitComm" + i, commTitoli, { sameSite: 'strict' });
             Cookies3.set("CorpoComm" + i, commCorpo, { sameSite: 'strict' });
             i++;
@@ -56,18 +56,18 @@ $(document).ready(function () {
             window.location.reload();
         }
         //Verifica se sono stati inseriti il titolo e il corpo
-        else if ($("#titolo").val() == "" && $("#corpo").val() != "") {
+        else if ($("#titolo").val() == "" && $("#corpoC").val() != "") {
             alert("ATTENZIONE: inserire un titolo per la comunicazione");
             $("#titolo").css("border-color", "red");
         }
-        else if ($("#titolo").val() != "" && $("#corpo").val() == "") {
+        else if ($("#titolo").val() != "" && $("#corpoC").val() == "") {
             alert("ATTENZIONE: inserire il corpo della comunicazione");
-            $("#corpo").css("border-color", "red");
+            $("#corpoC").css("border-color", "red");
 
         }
-        else if ($("#titolo").val() == "" && $("#corpo").val() == "") {
+        else if ($("#titolo").val() == "" && $("#corpoC").val() == "") {
             alert("COMUNICAZIONE VUOTA: prima di pubblicarla assicurati di aver compilato sia il titolo sia il corpo di essa");
-            $("#corpo").css("border-color", "red");
+            $("#corpoC").css("border-color", "red");
             $("#titolo").css("border-color", "red");
         }
     });
@@ -89,15 +89,21 @@ function leggi(id) {
 
 //funzione per l'eliminazione della comunicazione e quindi anche del cookie
 function elimina(id) {
-    Cookies3.set("NComm", Cookies3.get("NComm") - 1, { sameSite: 'strict' });
-    for (i = id; i < Cookies3.get("NComm"); i++) {
-        Cookies3.set("TitComm" + i, Cookies3.get("TitComm" + (i + 1)), { sameSite: 'strict' });
-        Cookies3.set("CorpoComm" + i, Cookies3.get("CorpoComm" + (i + 1)), { sameSite: 'strict' });
-    }
-    i = Cookies3.get("NComm");
-    Cookies3.remove("TitComm" + i, { path: '' }, { sameSite: 'strict' });
-    Cookies3.remove("CorpoComm" + i, { path: '' }, { sameSite: 'strict' });
-    window.location.reload();
+    $("#avvertimento").css({ "display": "block" });
+    $("#si").click(function () {
+        Cookies3.set("NComm", Cookies3.get("NComm") - 1, { sameSite: 'strict' });
+        for (i = id; i < Cookies3.get("NComm"); i++) {
+            Cookies3.set("TitComm" + i, Cookies3.get("TitComm" + (i + 1)), { sameSite: 'strict' });
+            Cookies3.set("CorpoComm" + i, Cookies3.get("CorpoComm" + (i + 1)), { sameSite: 'strict' });
+        }
+        i = Cookies3.get("NComm");
+        Cookies3.remove("TitComm" + i, { path: '' }, { sameSite: 'strict' });
+        Cookies3.remove("CorpoComm" + i, { path: '' }, { sameSite: 'strict' });
+        window.location.reload();
+    });
+    $("#no").click(function () {
+        $("#avvertimento").css({ "display": "none" });
+    });
 }
 
 function modifica(id) {

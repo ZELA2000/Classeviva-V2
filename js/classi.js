@@ -133,11 +133,20 @@ $(document).ready(function () {
     $("#pubblica").click(function () {
         classe = $("#classe").val();
         sezioneClasse = $("#sezione").val();
-        CookiesClassi.set("Classe" + i, classe, { sameSite: 'strict' });
-        CookiesClassi.set("Sezione" + i, sezioneClasse, { sameSite: 'strict' });
-        i++;
-        CookiesClassi.set("NClassi", i, { sameSite: 'strict' });
-        window.location.reload();
+        let e = 0;
+        for (let j = 0; j < CookiesClassi.get("NClassi"); j++) {
+            if (CookiesClassi.get("Classe" + j) == classe && CookiesClassi.get("Sezione" + j) == sezioneClasse) {
+                alert("ATTENZIONE: la classe inserita è già presente");
+                e = 1;
+            }
+        }
+        if (e == 0) {
+            CookiesClassi.set("Classe" + i, classe, { sameSite: 'strict' });
+            CookiesClassi.set("Sezione" + i, sezioneClasse, { sameSite: 'strict' });
+            i++;
+            CookiesClassi.set("NClassi", i, { sameSite: 'strict' });
+            window.location.reload();
+        }
     });
 });
 
@@ -231,7 +240,7 @@ function elimina(id) {
         window.location.reload();
     });
     $("#no").click(function () {
-        window.location.reload();
+        $("#avvertimento").css({ "display": "none" });
     });
 }
 

@@ -59,8 +59,8 @@
             <label for="studenti">Studente:</label>
             <select name="studente" id="studenti"></select
             ><br />
-            <label for="corpo">Corpo:</label><br />
-            <textarea cols="30" rows="4" id="corpo"></textarea><br />
+            <label for="corpoN">Corpo:</label><br />
+            <textarea cols="30" rows="4" id="corpoN"></textarea><br />
             <label for="data">Data:</label>
             <input type="date" name="Data" id="data" />
             <button id="pubblica">Pubblica</button>
@@ -83,5 +83,19 @@
           </b>
         </div>
     </main>
+    <!--avvertimento-->
+    <div id="avvertimento" style="display: none;">
+      <div id="corpo">
+        <b>
+          <div id="attenzione">Attenzione!</div>
+          <p>
+            Sei sicuro di voler eliminare questa nota? <br />
+            Questa azione non è reversibile.
+          </p>
+          <button id="si">Si</button>
+          <button id="no">No</button>
+        </b>
+      </div>
+    </div>
   </body>
 </html>

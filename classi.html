@@ -55,7 +55,7 @@
           <b>
             <label for="classe">Classe:</label>
             <select name="classi" id="classe">
-              <option value="1" id="classe1Or">1^</option>
+              <option value="1" id="classe1Or" selected>1^</option>
               <option value="2" id="classe2Or">2^</option>
               <option value="3" id="classe3Or">3^</option>
               <option value="4" id="classe4Or">4^</option>
@@ -64,7 +64,7 @@
             <br /><br />
             <label for="sezione">Sezione:</label>
             <select name="sezioni" id="sezione">
-              <option value="A" id="sezioneAOr">A</option>
+              <option value="A" id="sezioneAOr" selected>A</option>
               <option value="B" id="sezioneBOr">B</option>
               <option value="C" id="sezioneCOr">C</option>
               <option value="D" id="sezioneDOr">D</option>
@@ -144,18 +144,20 @@
           </b>
         </div>
       </div>
-      <!--avvertimento-->
-      <div id="avvertimento" style="display: none;">
-        <div id="sfondo">
-          <b>
-            <p>
-              Sei sicuro di voler eliminare la classe?
-            </p>
-            <button id="si">Si</button>
-            <button id="no">No</button>
-          </b>
-        </div>
-      </div>
     </main>
+    <!--avvertimento-->
+    <div id="avvertimento" style="display: none;">
+      <div id="corpo">
+        <b>
+          <div id="attenzione">Attenzione!</div>
+          <p>
+            Sei sicuro di voler eliminare la classe?<br>
+            Questa azione è irreversibile.
+          </p>
+          <button id="si">Si</button>
+          <button id="no">No</button>
+        </b>
+      </div>
+    </div>
   </body>
 </html>

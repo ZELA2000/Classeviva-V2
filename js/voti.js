@@ -86,19 +86,25 @@ function leggi(id) {
 
 //funzione per eliminare il voto
 function elimina(id) {
-    CookiesVoti.set("NVoti", CookiesVoti.get("NVoti") - 1, { sameSite: 'strict' });
-    for (let j = id; j < CookiesVoti.get("NVoti"); j++) {
-        CookiesVoti.set("PersVoto" + j, CookiesVoti.get("PersVoto" + (j + 1)), { sameSite: 'strict' });
-        CookiesVoti.set("DescrizioneValutazione" + j, CookiesVoti.get("DescrizioneValutazione" + (j + 1)), { sameSite: 'strict' });
-        CookiesVoti.set("DataValutazione" + j, CookiesVoti.get("DataValutazione" + (j + 1)), { sameSite: 'strict' });
-        CookiesVoti.set("Valutazione" + j, CookiesVoti.get("Valutazione" + (j + 1)), { sameSite: 'strict' });
-    }
-    i = CookiesVoti.get("NVoti");
-    CookiesVoti.remove("PersVoto" + i);
-    CookiesVoti.remove("DescrizioneValutazione" + i);
-    CookiesVoti.remove("DataValutazione" + i);
-    CookiesVoti.remove("Valutazione" + i);
-    window.location.reload();
+    $("#avvertimento").css({ "display": "block" });
+    $("#si").click(function () {
+        CookiesVoti.set("NVoti", CookiesVoti.get("NVoti") - 1, { sameSite: 'strict' });
+        for (let j = id; j < CookiesVoti.get("NVoti"); j++) {
+            CookiesVoti.set("PersVoto" + j, CookiesVoti.get("PersVoto" + (j + 1)), { sameSite: 'strict' });
+            CookiesVoti.set("DescrizioneValutazione" + j, CookiesVoti.get("DescrizioneValutazione" + (j + 1)), { sameSite: 'strict' });
+            CookiesVoti.set("DataValutazione" + j, CookiesVoti.get("DataValutazione" + (j + 1)), { sameSite: 'strict' });
+            CookiesVoti.set("Valutazione" + j, CookiesVoti.get("Valutazione" + (j + 1)), { sameSite: 'strict' });
+        }
+        i = CookiesVoti.get("NVoti");
+        CookiesVoti.remove("PersVoto" + i);
+        CookiesVoti.remove("DescrizioneValutazione" + i);
+        CookiesVoti.remove("DataValutazione" + i);
+        CookiesVoti.remove("Valutazione" + i);
+        window.location.reload();
+    });
+    $("#no").click(function () {
+        $("#avvertimento").css({ "display": "none" });
+    });
 }
 
 function modifica(id) {

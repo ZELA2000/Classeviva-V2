@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,400;1,500&display=swap');
-html{
+
+html {
     font-family: 'Roboto';
     background-color: #cc1020;
     overflow-x: hidden;
 }
-body{
+
+body {
     margin: 0px;
     padding: 0px;
     border: 0px;
 }
-header{
+
+header {
     background-color: #990c18;
     color: #fff;
     font-size: 2em;
     padding: 20px;
     box-shadow: 2px 0px 20px 5px #990c18;
 }
-#box-logout{
+
+#box-logout {
     position: absolute;
     top: 16px;
     right: 15px;
@@ -25,20 +29,25 @@ header{
     justify-content: center;
     text-align: center;
 }
-#logout{
+
+#logout {
     width: 100%;
     background-color: #e7e7e7;
     border: 1px solid black;
     border-radius: 0.5em;
     padding: 5px;
 }
-#logout:hover{
+
+#logout:hover {
     background-color: #d1d1d1;
 }
-#account{
+
+#account {
     width: 80%;
 }
-#indietro, #aggiungi{
+
+#indietro,
+#aggiungi {
     width: 7em;
     height: 4em;
     background-color: #e7e7e7;
@@ -46,14 +55,18 @@ header{
     border-radius: 0.5em;
     padding: 5px;
 }
-#indietro:hover, #aggiungi:hover{
+
+#indietro:hover,
+#aggiungi:hover {
     background-color: #d1d1d1;
 }
-.penna{
+
+.penna {
     width: 1.5em;
     height: 1.5em;
 }
-#modifica{
+
+#modifica {
     position: absolute;
     right: 4em;
     background-color: #fff;
@@ -61,10 +74,12 @@ header{
     border-radius: 0.5em;
     padding: 5px;
 }
-#modifica:hover{
+
+#modifica:hover {
     background-color: #d1d1d1;
-}	
-.chiudi{
+}
+
+.chiudi {
     position: absolute;
     right: 1em;
     background-color: #fff;
@@ -73,10 +88,56 @@ header{
     font-size: 1.5em;
     z-index: 1;
 }
-.chiudi:hover{
+
+.chiudi:hover {
     background-color: #d1d1d1;
 }
-#bottoni{
+
+#bottoni {
     text-align: right;
     margin: 10px;
+}
+
+#avvertimento {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: #0000006d;
+    z-index: 1;
+}
+
+#corpo {
+    width: auto;
+    height: auto;
+    padding: 2em;
+    border-radius: 0.5em;
+    border: 2px solid #000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    z-index: 2;
+    text-align: center;
+}
+
+#attenzione {
+    color: #990c18;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#si,
+#no {
+    width: 40%;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 0px;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
 }
