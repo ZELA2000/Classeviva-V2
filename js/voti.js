@@ -54,17 +54,32 @@ $(document).ready(function () {
         }
     });
     $("#pubblica").click(function () {
-        persVoto = $("#studenti").val();
-        descrizione = $("#descrizione").val();
-        data = $("#data").val();
-        valutazione = $("#voto").val();
-        CookiesVoti.set("PersVoto" + i, persVoto, { sameSite: 'strict' });
-        CookiesVoti.set("DescrizioneValutazione" + i, descrizione, { sameSite: 'strict' });
-        CookiesVoti.set("DataValutazione" + i, data, { sameSite: 'strict' });
-        CookiesVoti.set("Valutazione" + i, valutazione, { sameSite: 'strict' });
-        i++;
-        CookiesVoti.set("NVoti", i, { sameSite: 'strict' });
-        window.location.reload();
+        if ($("#descrizione").val() != "" && $("#data").val() != "") {
+            persVoto = $("#studenti").val();
+            descrizione = $("#descrizione").val();
+            data = $("#data").val();
+            valutazione = $("#voto").val();
+            CookiesVoti.set("PersVoto" + i, persVoto, { sameSite: 'strict' });
+            CookiesVoti.set("DescrizioneValutazione" + i, descrizione, { sameSite: 'strict' });
+            CookiesVoti.set("DataValutazione" + i, data, { sameSite: 'strict' });
+            CookiesVoti.set("Valutazione" + i, valutazione, { sameSite: 'strict' });
+            i++;
+            CookiesVoti.set("NVoti", i, { sameSite: 'strict' });
+            window.location.reload();
+        }
+        else if ($("#descrizione").val() == "" && $("#data").val() != "") {
+            alert("ATTENZIONE: inserire una descrizione per il voto");
+            $("#descrizione").css("border-color", "red");
+        }
+        else if ($("#descrizione").val() != "" && $("#data").val() == "") {
+            alert("ATTENZIONE: inserire la data del voto");
+            $("#data").css("border-color", "red");
+        }
+        else if ($("#descrizione").val() == "" && $("#data").val() == "") {
+            alert("ATTENZIONE: inserire una descrizione e la data del voto");
+            $("#data").css("border-color", "red");
+            $("#descrizione").css("border-color", "red");
+        }
     });
 });
 

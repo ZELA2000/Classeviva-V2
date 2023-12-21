@@ -54,15 +54,30 @@ $(document).ready(function () {
         }
     });
     $("#pubblica").click(function () {
-        persNota = $("#studenti").val();
-        testo = $("#corpoN").val();
-        data = $("#data").val();
-        CookiesNote.set("PersNota" + i, persNota, { sameSite: 'strict' });
-        CookiesNote.set("TestoNota" + i, testo, { sameSite: 'strict' });
-        CookiesNote.set("DataNota" + i, data, { sameSite: 'strict' });
-        i++;
-        CookiesNote.set("NNote", i, { sameSite: 'strict' });
-        window.location.reload();
+        if ($("#corpoN").val() != "" && $("#data").val() != "") {
+            persNota = $("#studenti").val();
+            testo = $("#corpoN").val();
+            data = $("#data").val();
+            CookiesNote.set("PersNota" + i, persNota, { sameSite: 'strict' });
+            CookiesNote.set("TestoNota" + i, testo, { sameSite: 'strict' });
+            CookiesNote.set("DataNota" + i, data, { sameSite: 'strict' });
+            i++;
+            CookiesNote.set("NNote", i, { sameSite: 'strict' });
+            window.location.reload();
+        }
+        else if ($("#corpoN").val() == "" && $("#data").val() != "") {
+            alert("ATTENZIONE: inserire il corpo della nota");
+            $("#corpoN").css("border-color", "red");
+        }
+        else if ($("#corpoN").val() != "" && $("#data").val() == "") {
+            alert("ATTENZIONE: inserire la data della nota");
+            $("#data").css("border-color", "red");
+        }
+        else if ($("#corpoN").val() == "" && $("#data").val() == "") {
+            alert("ATTENZIONE: inserire il corpo e la data della nota");
+            $("#corpoN").css("border-color", "red");
+            $("#data").css("border-color", "red");
+        }
     });
 });
 

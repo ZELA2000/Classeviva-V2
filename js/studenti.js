@@ -55,15 +55,30 @@ $(document).ready(function () {
     });
     //funzione per salvare le impostazioni
     $("#pubblica").click(function () {
-        nome = $("#nome").val();
-        cognome = $("#cognome").val();
-        classe = $("#classe").val();
-        CookiesStudenti.set("Nome" + i, nome, { sameSite: 'strict' });
-        CookiesStudenti.set("Cognome" + i, cognome, { sameSite: 'strict' });
-        CookiesStudenti.set("ClasseStrud" + i, classe, { sameSite: 'strict' });
-        i++;
-        CookiesStudenti.set("NStudenti", i, { sameSite: 'strict' });
-        window.location.reload();
+        if ($("#nome").val() != "" && $("#cognome").val() != "") {
+            nome = $("#nome").val();
+            cognome = $("#cognome").val();
+            classe = $("#classe").val();
+            CookiesStudenti.set("Nome" + i, nome, { sameSite: 'strict' });
+            CookiesStudenti.set("Cognome" + i, cognome, { sameSite: 'strict' });
+            CookiesStudenti.set("ClasseStrud" + i, classe, { sameSite: 'strict' });
+            i++;
+            CookiesStudenti.set("NStudenti", i, { sameSite: 'strict' });
+            window.location.reload();
+        }
+        else if ($("#nome").val() == "" && $("#cognome").val() != "") {
+            alert("ATTENZIONE: inserire un nome per lo studente");
+            $("#nome").css("border-color", "red");
+        }
+        else if ($("#nome").val() != "" && $("#cognome").val() == "") {
+            alert("ATTENZIONE: inserire un cognome per lo studente");
+            $("#cognome").css("border-color", "red");
+        }
+        else if ($("#nome").val() == "" && $("#cognome").val() == "") {
+            alert("ATTENZIONE: inserire un nome e un cognome per lo studente");
+            $("#nome").css("border-color", "red");
+            $("#cognome").css("border-color", "red");
+        }
     });
 });
 
